@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2019 ReyEs. All rights reserved.
+ * 
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <webpayplus_gateway>
+                <!-- payment_action>authorize</payment_action --><!-- You can use another methor like capture  -->
+                <title>WebPay PLUS</title>
+                <model>ReyEs\WebPayPlus\Model\PaymentMethod</model>
+                <active>0</active>
+                <id_company>SNBX</id_company>
+                <id_branch>01SNBXBRNCH</id_branch>
+                <user>SNBXUSR01</user>
+                <password backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+                <merchant_gateway_key backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+                <endpoint>https://wppsandbox.mit.com.mx/gen</endpoint>
+                <data0>SNDBX123</data0>
+                <omitir_notif_default>0</omitir_notif_default>
+                <st_correo>0</st_correo>
+                <debug>1</debug>
+                <payment_action>authorize</payment_action>
+                <order_status>pending_payment</order_status>
+                <currency>MXN</currency>
+                <can_authorize>1</can_authorize>
+                <can_capture>1</can_capture>
+                <can_void>1</can_void>
+                <can_use_checkout>1</can_use_checkout>
+                <is_gateway>1</is_gateway>
+                <sort_order>1</sort_order>
+                <debugReplaceKeys>MERCHANT_KEY</debugReplaceKeys>
+                <paymentInfoKeys>FRAUD_MSG_LIST</paymentInfoKeys>
+                <privateInfoKeys>FRAUD_MSG_LIST</privateInfoKeys>
+            </webpayplus_gateway>
+        </payment>
+    </default>
+</config>
