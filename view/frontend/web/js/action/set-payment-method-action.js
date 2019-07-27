@@ -13,8 +13,6 @@ define(
         'use strict';
         return function (checkoutConfig) {
 
-            console.log(checkoutConfig);
-
             var checkout_url = checkoutConfig.checkoutUrl;
             var base_url = checkout_url.substr(0, checkout_url.indexOf('checkout'));
 
