@@ -128,7 +128,6 @@ class Geturl extends \Magento\Framework\App\Action\Action
                     <promociones>{$promociones}</promociones>
                     <st_correo>{$st_correo}</st_correo>
                     <mail_cliente>{$mail_cliente}</mail_cliente>
-                    <st_cr>{$st_cr}</st_cr>
                     <datos_adicionales>
                       {$datos_adicionales_str}
                     </datos_adicionales>
