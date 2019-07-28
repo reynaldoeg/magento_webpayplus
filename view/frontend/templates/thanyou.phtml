@@ -1,1 +1,48 @@
-<h2><?php echo __('Gracias') ?></h2>
+<?php 
+$order = $block->getOrder();
+
+$success = $_GET['success'];
+$nbResponse = $_GET['nbResponse']; //Aprobada
+?>
+
+<?php if($success == 'true' && $nbResponse == 'Aprobado'): ?>
+<div class="checkout-success">
+    <?php if($order->getIncrementId()):?>
+        <?php if ($block->getCustomerId()) :?>
+            <p>
+                El número de su orden es: 
+                    <a href="https://providenciapruebas.com/sales/order/view/order_id/3614/" class="order-number">
+                        <strong>
+                            <?php echo $order->getIncrementId() ?>
+                        </strong>
+                    </a>.
+            </p>
+        <?php  else :?>
+
+        <?php endif;?>
+    <?php endif;?>
+
+    <p>Le enviaremos detalles con la confirmación de su orden e información de rastreo.</p>
+    <br/><br/>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <a class="action primary continue" href="https://providenciapruebas.com/">
+                <span>Continuar Comprando</span>
+            </a>
+        </div>
+    </div>
+</div>
+<?php else: ?>
+<div class="checkout-success">
+    <p>Hubo un error al procesar su pago, inténtelo nuevamente.</p>
+    <br/><br/>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <a class="action primary continue" href="https://providenciapruebas.com/">
+                <span>Continuar Comprando</span>
+            </a>
+        </div>
+    </div>
+</div>
+<?php endif;?>
+
