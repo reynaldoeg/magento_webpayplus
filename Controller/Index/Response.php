@@ -71,12 +71,6 @@ class Response extends \Magento\Framework\App\Action\Action
         // Obtiene respuesta del servidor de WebPayPlus
         $strResponse = $this->getRequest()->getParam('strResponse');
 
-        //$this->logger->info('decryptedString');
-        //$this->logger->info($strResponse);
-
-        // Envía error si se aplica urldecode
-        // $decodedString = urldecode($strResponse);
-
         $key = $this->scopeConfig->getValue('payment/webpayplus_gateway/merchant_gateway_key', ScopeInterface::SCOPE_STORE);
 
         // Decifra la respuesta
@@ -100,15 +94,6 @@ class Response extends \Magento\Framework\App\Action\Action
         $response = $centerofpayments['response'];
         $this->logger->info('response');
         $this->logger->info($response);
-        //var_dump($response);
-
-
-        /*$reference = $this->cart->getQuote()->getId();
-        $this->logger->info('reference');
-        $this->logger->info($reference);*/
-
-        //var_dump($centerofpayments);
-
 
         try
         {
@@ -162,7 +147,6 @@ class Response extends \Magento\Framework\App\Action\Action
 
 
                 //===================================
-                //$reference = '78787';
                 $quoteId = $reference; 
                 $quote = $this->cartRepositoryInterface->get($quoteId);
 
@@ -174,7 +158,6 @@ class Response extends \Magento\Framework\App\Action\Action
                 $retur_id = $this->quoteManagement->placeOrder($quote->getId(), $pay);
                 $this->logger->info('Order id: ' . $retur_id);
                 //===================================
-
 
                 $data = [
                     'stauts' => $response,
