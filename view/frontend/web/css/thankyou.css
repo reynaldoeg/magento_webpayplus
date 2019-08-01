@@ -1,0 +1,16 @@
+.checkout-success .success-msg{
+    background-color: #dff0d8;
+    border-color: #d6e9c6; 
+    color: #3c763d;
+    padding: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.checkout-error .error-msg{
+    background-color: #f2dede;
+    border-color: #ebccd1; 
+    color: #a94442;
+    padding: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}

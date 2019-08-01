@@ -2,13 +2,8 @@
 
 namespace ReyEs\WebPayPlus\Controller\Index;
 
-//use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
-//use Magento\Framework\Controller\Result\JsonFactory;
-//use Magento\Framework\App\Config\ScopeConfigInterface;
-
-//use ReyEs\WebPayPlus\Helper\AESCrypto;
 
 class Thankyou extends \Magento\Framework\App\Action\Action
 {
@@ -30,9 +25,6 @@ class Thankyou extends \Magento\Framework\App\Action\Action
     {
         parent::__construct($context);
         $this->resultPageFactory = $resultPageFactory;
-        //$this->resultJsonFactory = $resultJsonFactory;
-        //$this->scopeConfig = $scopeConfig;
-        //$this->aescrypto = $aescrypto;
         $this->logger = $logger;
     }
 
@@ -41,7 +33,7 @@ class Thankyou extends \Magento\Framework\App\Action\Action
         $resultPageFactory = $this->resultPageFactory->create();
         
         // Add page title
-        $resultPageFactory->getConfig()->getTitle()->set(__('Gracias por tu compra'));
+        $resultPageFactory->getConfig()->getTitle()->set(__('Detalles de tu compra'));
         
         return $resultPageFactory; 
     }

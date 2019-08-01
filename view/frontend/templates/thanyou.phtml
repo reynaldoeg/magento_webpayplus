@@ -7,38 +7,68 @@ $nbResponse = $_GET['nbResponse']; //Aprobada
 
 <?php if($success == 'true' && $nbResponse == 'Aprobado'): ?>
 <div class="checkout-success">
-    <?php if($order->getIncrementId()):?>
-        <?php if ($block->getCustomerId()) :?>
-            <p>
-                El número de su orden es: 
-                    <a href="https://providenciapruebas.com/sales/order/view/order_id/3614/" class="order-number">
-                        <strong>
-                            <?php echo $order->getIncrementId() ?>
-                        </strong>
-                    </a>.
-            </p>
-        <?php  else :?>
+    <div class="success-msg">
+        <?php if($order->getIncrementId()):?>
+            <?php if ($block->getCustomerId()) :?>
+                <p>
+                    El número de su orden es: 
+                        <a href="#">
+                            <strong>
+                                <?php echo $order->getIncrementId() ?>
+                            </strong>
+                        </a>.
+                </p>
+            <?php  else :?>
 
+            <?php endif;?>
         <?php endif;?>
-    <?php endif;?>
-
-    <p>Le enviaremos detalles con la confirmación de su orden e información de rastreo.</p>
+        <p>
+            <b>Su pago fue realizado correctamente.</b> 
+            Le enviaremos por correo los detalles con la confirmación de su orden e información de rastreo.
+        </p>
+        <?php if(isset($_GET['nuAut'])): ?>
+            <p>Número de Autorización: <?= $_GET['nuAut'] ?></p>
+        <?php endif; ?>
+        <?php if(isset($_GET['operacion'])): ?>
+            <p>Número de Operación: <?= $_GET['operacion'] ?></p>
+        <?php endif; ?>
+        <?php if(isset($_GET['fecha'])): ?>
+            <p>Fecha: <?= $_GET['fecha'] ?></p>
+        <?php endif; ?>
+        <?php if(isset($_GET['referencia'])): ?>
+            <p>Referencia: <?= $_GET['referencia'] ?></p>
+        <?php endif; ?>
+        <?php if(isset($_GET['importe'])): ?>
+            <p>Importe: <?= "$".number_format($_GET['importe'], 2) ?></p>
+        <?php endif; ?>
+        <p></p>
+    </div>
+        
     <br/><br/>
     <div class="actions-toolbar">
         <div class="primary">
-            <a class="action primary continue" href="https://providenciapruebas.com/">
+            <a class="action primary continue" href="<?= $block->getBaseUrl(); ?>">
                 <span>Continuar Comprando</span>
             </a>
         </div>
     </div>
 </div>
 <?php else: ?>
-<div class="checkout-success">
-    <p>Hubo un error al procesar su pago, inténtelo nuevamente.</p>
+<div class="checkout-error">
+    <div class="error-msg">
+        <p>Hubo un problema al procesar su pago, inténtelo nuevamente.</p>
+        <?php if(isset($_GET['cdResponse'])): ?>
+            <p><?= $_GET['cdResponse']; ?></p>
+        <?php endif; ?>
+
+        <?php if(isset($_GET['nb_error'])): ?>
+            <p><?= $_GET['nb_error']; ?></p>
+        <?php endif; ?>
+    </div>
     <br/><br/>
     <div class="actions-toolbar">
         <div class="primary">
-            <a class="action primary continue" href="https://providenciapruebas.com/">
+            <a class="action primary continue" href="<?= $block->getBaseUrl(); ?>">
                 <span>Continuar Comprando</span>
             </a>
         </div>

@@ -31,4 +31,8 @@ class Thankyou extends \Magento\Sales\Block\Order\Totals
     {
         return $this->customerSession->getCustomer()->getId();
     }
+
+    public function getBaseUrl(){
+        return $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_WEB);
+    }
 }
