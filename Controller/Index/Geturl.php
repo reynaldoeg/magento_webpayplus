@@ -62,25 +62,16 @@ class Geturl extends \Magento\Framework\App\Action\Action
             
         try
         {
-            //$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-            //$cart = $objectManager->get('\Magento\Checkout\Model\Cart');
             $quote = $this->cart->getQuote();
             $quoteId = $quote->getId();
-            //$reservedquoteId = $quote->reserveOrderId();
-
-            //var_dump($reservedquoteId);
 
             # Business
             $id_company = $this->scopeConfig->getValue('payment/webpayplus_gateway/id_company', ScopeInterface::SCOPE_STORE);
             $id_branch = $this->scopeConfig->getValue('payment/webpayplus_gateway/id_branch', ScopeInterface::SCOPE_STORE);
             $user = $this->scopeConfig->getValue('payment/webpayplus_gateway/user', ScopeInterface::SCOPE_STORE);
             $password = $this->scopeConfig->getValue('payment/webpayplus_gateway/password', ScopeInterface::SCOPE_STORE);
-            
+
             # Url
-            // $reference = $this->getRequest()->getParam('reference');
-            //$reference = uniqid();
-            //$reference = $this->cart->getQuote()->getId();
-            // $reference = Quote::reserveOrderId;
             $reference = $quoteId;
             $amount = $this->getRequest()->getParam('amount');
             $moneda = $this->getRequest()->getParam('moneda');
@@ -88,7 +79,6 @@ class Geturl extends \Magento\Framework\App\Action\Action
             $omitir_notif_default = $this->scopeConfig->getValue('payment/webpayplus_gateway/omitir_notif_default', ScopeInterface::SCOPE_STORE);
             $promociones = 'C';
             $st_correo = $this->scopeConfig->getValue('payment/webpayplus_gateway/st_correo', ScopeInterface::SCOPE_STORE);
-            // $fh_vigencia = '12/07/2019';
             $mail_cliente = $this->getRequest()->getParam('mail_cliente');
             $st_cr = 'A';
 
@@ -104,6 +94,8 @@ class Geturl extends \Magento\Framework\App\Action\Action
             $datos_adicionales = $this->getRequest()->getParam('datos_adicionales');
 
             $datos_adicionales_str = '';
+
+            // Envio de items (Opcional)
             /*if (is_array($datos_adicionales))
             {
                 foreach ($datos_adicionales as $item) {
@@ -111,7 +103,6 @@ class Geturl extends \Magento\Framework\App\Action\Action
                     $datos_adicionales_str .= $tmp;
                 }
             }*/
-
 
             # Paso 1: Cadena XML
             $originalString = <<<EOD
@@ -139,6 +130,8 @@ class Geturl extends \Magento\Framework\App\Action\Action
                 </P>
 EOD;
 
+            $this->logger->info('OriginalString');
+            $this->logger->info($originalString);
 
             # Paso 2: Cifrando la cadena
             $encryptedString = $this->aescrypto->encriptar($originalString, $key); 
