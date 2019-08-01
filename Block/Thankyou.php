@@ -1,4 +1,9 @@
 <?php
+/**
+ * Copyright © 2019 ReyEs. All rights reserved.
+ * 
+ */
+
 namespace ReyEs\WebPayPlus\Block;
 
 class Thankyou extends \Magento\Sales\Block\Order\Totals

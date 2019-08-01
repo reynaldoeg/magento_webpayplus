@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright © 2019 ReyEs. All rights reserved.
+ * 
+ */
 
 namespace ReyEs\WebPayPlus\Controller\Index;
 

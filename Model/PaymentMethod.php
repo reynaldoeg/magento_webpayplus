@@ -1,7 +1,11 @@
 <?php
+/**
+ * Copyright © 2019 ReyEs. All rights reserved.
+ * 
+ */
+
 namespace ReyEs\WebPayPlus\Model;
  
-// class PaymentMethod extends \Magento\Payment\Model\Method\Cc
 class PaymentMethod extends \Magento\Payment\Model\Method\AbstractMethod
 {
     const CODE = 'webpayplus_gateway';
